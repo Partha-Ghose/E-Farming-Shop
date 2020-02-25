@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4edb1b3ef6d947349bfbd1e8040cfeb3" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_Category" Width="1.5" PointX="7.375" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_District" Width="1.5" PointX="10.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_NidType" Width="1.5" PointX="0.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_SellerProduct" Width="1.5" PointX="7.625" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_Support" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_SellerProduct_Tbl_Category" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Width="1.5" PointX="5.25" PointY="2.875" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_District" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_NidType" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_SellerProduct_Tbl_BuyerProfile" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_Support_Tbl_BuyerProfile" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_Product" Width="1.5" PointX="9.875" PointY="3" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.UsersRole" Width="1.5" PointX="9.5" PointY="8.5" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_BuyerProfile" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_UsersRole_Tbl_BuyerProfile" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_Category" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_Blog" Width="1.5" PointX="0.625" PointY="3.25" />
+        <EntityTypeShape EntityType="dbMyEFarmingProjectModel.Tbl_Comment" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_Blog" />
+        <AssociationConnector Association="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_BuyerProfile" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

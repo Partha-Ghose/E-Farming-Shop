@@ -1,0 +1,96 @@
+﻿@model EFarmingProject.Models.Tbl_Blog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Blog</a>
+        </li>
+        <li class="breadcrumb-item active">Details</li>
+    </ol>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <div class="row" style="border: 1px solid #000;">
+            <div class="col-md-5 col-sm-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BlogTitle)
+                </dt>
+                <hr />
+                <dd>
+                    @Html.DisplayFor(model => model.BlogTitle)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BlogImage)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.BlogImage)*@
+                    @*<img src="@Url.Content(Model.BlogImage)" width="200px;" height="250px;" />*@
+                    <img class="img-thumbnail" style="height: 280px;" src="@Url.Content(Model.BlogImage)" />
+                </dd>
+                <br />
+
+                <br />
+                <dt>
+                    @Html.DisplayName("Created Date")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BlCreatedDate)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.AuthorName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AuthorName)
+                </dd>
+                <br />
+                <br />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BShortDescri)
+                </dt>
+                <hr />
+                <dd style="text-align:justify">
+                    @Html.DisplayFor(model => model.BShortDescri)
+                </dd>
+
+
+                <br />
+                <br />
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LongDescription)
+                </dt>
+                <hr />
+                <dd style="text-align:justify">
+                    @Html.DisplayFor(model => model.LongDescription)
+                </dd>
+                <br />
+                <br />
+            </div>
+        </div>
+
+       
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BLogId },new { @class="btn btn-info"}) |
+    @Html.ActionLink("Back to List", "Index","",new { @class="btn btn-secondary"})
+</p>

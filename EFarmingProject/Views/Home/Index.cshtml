@@ -1,0 +1,106 @@
+﻿@model IPagedList<EFarmingProject.Models.Tbl_SellerProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@using PagedList;
+@using PagedList.Mvc;
+
+<div class="olContent f1"><h2 style="color:#000000; margin-top:1px;">Search Category</h2></div>
+@*<form method="post">
+        <div class="olSearch fr">
+            <input type="text" name="search" placeholder="Enter Keyword" class="inputComn houseText form-control" />
+            <input type="button"  value="Search" />
+        </div>
+    </form>*@
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+<div class="olSearch fr">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                @*<input type="text" class="form-control" placeholder="Search for...">*@
+                <input type="text" name="search" placeholder="Enter Keyword" class="form-control" />
+                <span class="input-group-btn">
+                    @*<button class="btn btn-default" type="button">Go!</button>*@
+                    <input type="submit" value="search" name="submit" class="btn btn-secondary btn-block" />
+                </span>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+</div>
+}
+
+
+    <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-9">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>Our Products <small>trends products</small></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row product-container">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-6 col-lg-3" style="margin-bottom:8px;">
+                        <div class="thumbnail product-item" style="height:50%">
+                            @*<img src="~/ProductImg/@item.ProductImage" class="img-responsive"
+                                style="cursor:pointer;height:160px;width:100px" />*@
+                            <div class="img-responsive">
+                                <img src="@Url.Content(item.SProductImage)" width="100%" ; height="250px;                />
+                            </div>
+
+                            <div class="caption">
+                                @*<h5 class="card-title">@item.ProductTitle</h5>*@
+                                <div>
+                                    <h5 class="card-title">@item.Tbl_Category.CategoryName</h5>
+                                    <h5 style="float:right" class="card-title">
+                                        @Html.ActionLink("Details", "Details", "BuyerProduct", new { id = item.SProductId }, new { @class = "btn btn-primary" })
+                                    </h5>
+                                </div>
+                                <p>@item.SPrice TK</p>
+                                @*<p>@item.Tbl_BuyerProfile.Tbl_District.DistrictType</p>*@
+                                @if (item.SQuantity > 0)
+                                {
+                                    <p>Available</p>
+                                }
+                                else
+                                {
+                                    <p>Not Available</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-3 col-md-3 col-lg-3" style="float:left;">
+            <br /><br /><br />
+            <h3 style="background:#666; padding:10px;border:1px solid #000; border-radius:30px; width:250px; text-align:center;color: #ddd;">Calender</h3>
+            <iframe src="https://calendar.google.com/calendar/embed?height=210&amp;wkst=7&amp;bgcolor=%23E67C73&amp;ctz=Asia%2FDhaka&amp;src=cHBnaG9zZTBAZ21haWwuY29t&amp;src=YW9iYjFnbHBybDRvN21jZDZyanBuMG5zM29AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23039BE5&amp;color=%23D50000&amp;showTitle=0&amp;showNav=0&amp;showDate=1&amp;showPrint=0&amp;showTz=0&amp;showTabs=0&amp;showCalendars=0&amp;hl=bn" style="border:solid 1px #777" width="250" height="210" frameborder="0" scrolling="no"></iframe>
+            <br />
+            <hr />
+
+            <h3 style="background:#80D; padding:10px;border:1px solid #000; border-radius:30px; width:250px; text-align:center;color: #ddd;">Call Center</h3>
+            <h5 style="background:#663; line-height:20px; margin-top:15px; padding:20px 5px; border:1px solid #000; border-radius:30px; width:250px; text-align:center;color: #ddd;">
+                <a style="background:#000; padding:10px 15px; border-radius:20px; color:#ddd;" class="phone" href="tel:+3331"><i class="fa fa-phone" aria-hidden="true"></i> Call on :: 3331</a>
+                <br />
+                <br />
+                <p style="text-align:justify;">
+                    কৃষক বন্ধু ফোন সেবা (৩৩৩১) এ রেজিস্ট্রেশনের মাধ্যমে আপনার নিকটস্থ কৃষি অফিস হতে কৃষি বিষয়ক
+                    সকল সেবা ও পরামর্শ পাবেন। আধুনিক ও লাভজনক খামার ব্যবস্থাপনার জন্য কৃষি অফিসের পরামর্শ নিন।
+                </p>
+            </h5>
+        </div>
+    </div>
+
+    @Html.PagedListPager(Model, i => Url.Action("Index", "Home", new { i, search = Request.QueryString["search"] }))
+

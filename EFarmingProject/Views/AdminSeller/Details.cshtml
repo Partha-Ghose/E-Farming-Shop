@@ -1,0 +1,95 @@
+﻿@model EFarmingProject.Models.Tbl_SellerProduct
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SProductTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SProductTitle)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.SProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SProductDescription)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.SProductImage)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.SProductImage)*@
+            <img src="@Url.Content(Model.SProductImage)" width="200px;" height="250px;" />
+
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.SQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SQuantity)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.SPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPrice)
+        </dd>
+        <br />
+        <dt>
+            @*@Html.DisplayNameFor(model => model.SCreatedDate)*@
+            @Html.DisplayName("Created Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SCreatedDate)
+           
+        </dd>
+        <br />
+        <dt>
+            @*@Html.DisplayNameFor(model => model.SModifiedDate)*@
+            @Html.DisplayName("Modified Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SModifiedDate)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_BuyerProfile.BFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_BuyerProfile.BFirstName)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Category.CategoryName)
+        </dd>
+        <br />
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.SProductId },new { @class="btn btn-danger"}) |*@
+    @Html.ActionLink("Back to List", "Index","",new { @class="btn btn-secondary"})
+</p>

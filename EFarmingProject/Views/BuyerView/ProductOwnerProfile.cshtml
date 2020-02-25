@@ -1,0 +1,136 @@
+﻿@model EFarmingProject.Models.Tbl_BuyerProfile
+
+@{
+    ViewBag.Title = "ProductOwnerProfile";
+    Layout = "~/Views/Shared/_BuyerLayout.cshtml";
+}
+
+<h2 style="text-align:center;padding:20px 20px; background-color:#ff0000; border-radius:50px;">Product Owner Profile</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <div class="row" style="border: 1px solid #000;">
+            <div class="col-md-5 col-sm-6">
+                @*<dt>
+                    @Html.DisplayName("Buyer Image")
+                </dt>*@
+                <br />
+                <br />
+                <dd>
+                    <img class="img-thumbnail" style="height: 280px;" src="@Url.Content(Model.BImage)" />
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BDescription)
+                </dd>
+                <br />
+                <br />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayName("First Name")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BFirstName)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BLastName)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.MobileNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MobileNo)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnotherMobileNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AnotherMobileNo)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Village)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Village)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Postcode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Postcode)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Thana)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Thana)
+                </dd>
+                @*<br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tbl_District.DistrictType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tbl_District.DistrictType)
+                </dd>*@
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Division)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Division)
+                </dd>
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Back to Product", "Details", "BuyerProduct", new { id = Model.BId })
+</p>*@
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to Product", "Details", "BuyerProduct", new {  id = Model.BId  }) 
+</p>*@
+
+

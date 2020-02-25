@@ -1,0 +1,142 @@
+﻿@model IEnumerable<EFarmingProject.Models.Tbl_SellerProfile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-responsive table-bordered table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SAnotherMobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SIsEmailVarified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SActivationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Svillage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SThana)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Spostcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SNidno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDistrict)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDivision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SCreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SAnotherMobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SIsEmailVarified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SActivationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Svillage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SThana)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spostcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SNidno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDistrict)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDivision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SCreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SImage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SId })
+        </td>
+    </tr>
+}
+
+</table>

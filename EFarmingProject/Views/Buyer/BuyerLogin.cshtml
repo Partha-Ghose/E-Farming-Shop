@@ -1,0 +1,77 @@
+﻿@model EFarmingProject.Models.BuyerLogin
+
+@{
+    ViewBag.Title = "BuyerLogin";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 style="text-align:center;padding:20px 20px;color: #ddd; background-color:#ff0000; border-radius:50px;">User Login</h2>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-2"></div>
+        @Html.LabelFor(model => model.BEmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.BEmailId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BEmailId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2"></div>
+        @Html.LabelFor(model => model.BPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.BPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BPassword, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-2">
+            @Html.CheckBoxFor(model => model.RememberMe)
+            @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2"></div>
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" value="Sign In" class="btn btn-primary btn-block" />
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Register Now", "BuyerRegister", "Buyer")
+</div>
+@*<div>
+        @Html.ActionLink("Forget Password?", "ForgotPassword", "Buyer")
+    </div>*@
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

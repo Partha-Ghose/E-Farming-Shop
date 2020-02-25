@@ -1,0 +1,31 @@
+﻿@model EFarmingProject.Models.Tbl_District
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">District</a>
+        </li>
+        <li class="breadcrumb-item active">Details</li>
+    </ol>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DistrictType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistrictType)
+        </dd>
+        <br />
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DistrictId },new { @class="btn btn-info"}) |
+    @Html.ActionLink("Back to List", "Index","",new { @class="btn btn-secondary"})
+</p>

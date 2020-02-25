@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EFarmingProject.Models.Tbl_District>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Admin</a>
+        </li>
+        <li class="breadcrumb-item active">District</li>
+    </ol>
+
+<p>
+    @Html.ActionLink("Add District to Database", "Create","", new { @class="btn btn-info"})
+</p>
+<table class="table table-striped table-bordered table-responsive table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DistrictId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DistrictType)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.DistrictId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.DistrictId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.DistrictId })
+    </td>
+</tr>
+}
+
+</table>

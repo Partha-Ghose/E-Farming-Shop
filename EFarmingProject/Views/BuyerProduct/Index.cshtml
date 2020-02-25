@@ -1,0 +1,114 @@
+﻿@model IPagedList<EFarmingProject.Models.Tbl_SellerProduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BuyerLayout.cshtml";
+}
+<hr />
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@if (Model != null)
+{
+    @*..........Start Navbar section.................    *@
+
+    @*..........End Search section.................    *@
+    @*..........Start Search section.................    *@
+    @*<div class="olContent f1"><h2 style="color:#000000;">Search Product/Category</h2></div>
+        <form method="post">
+            <div class="olSearch fr">
+                <input type="text" name="search" placeholder="Enter Keyword" class="inputComn houseText form-control" />
+                <div class="searchIcon">
+                    <form action="~/BuyerProdct/Search/">
+                        <button type="button" class="btn btn-secondary searchBtn"><i class="fa fa-search"></i></button>
+                    </form>
+
+                </div>
+            </div>
+        </form>*@
+
+    @*<div class="navbar-left" style="margin-top:8px;">
+            @using (Html.BeginForm("Search", "BuyerProduct", FormMethod.Get))
+            {
+                <ul class="nav navbar-nav">
+                    <li>@Html.TextBox("id", ViewBag.CurrentFilter as string)</li>
+                    <li><input type="submit" value="Search" /></li>
+                </ul>
+            }
+        </div>*@
+
+    using (Html.BeginForm("Search", "BuyerProduct", FormMethod.Get))
+    {
+        <div class="olSearch fr">
+            @*<input type="text" name="id" placeholder="Enter Keyword" class="inputComn houseText form-control" />
+                <input type="submit" value="Search" name="submit" class="btn btn-secondary searchBtn searchIcon" />*@
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="input-group">
+                        <input type="text" name="id" placeholder="Enter Keyword" class=" houseText form-control" />
+                        @*<input type="text" name="id" placeholder="Enter Keyword" class="form-control" />*@
+                        <span class="input-group-btn">
+                            <input type="submit" value="Search" name="submit" class="btn btn-success" />
+                            @*<input type="submit" value="search" name="submit" class="btn btn-secondary btn-block" />*@
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+            </div>
+        </div>
+
+    }
+
+    @*..........End Search section.................    *@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Our Products <small>trends products</small></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row product-container">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-6 col-lg-3" style="margin-bottom:8px;">
+                <div class="thumbnail product-item" style="height:50%">
+                    @*<img src="~/ProductImg/@item.ProductImage" class="img-responsive"
+                        style="cursor:pointer;height:160px;width:100px" />*@
+                    <div class="img-responsive">
+                        <img src="@Url.Content(item.SProductImage)" width="100%" ; height="250px;             />
+                    </div>
+
+                    <div class="caption">
+                        @*<h5 class="card-title">@item.ProductTitle</h5>*@
+                        <div>
+                            <h5 class="card-title">@item.SProductTitle</h5>
+                            <h5 style="float:right" class="card-title">
+                                @Html.ActionLink("Details", "Details", "BuyerProduct", new { id = item.SProductId }, new { @class = "btn btn-primary" })
+                            </h5>
+                        </div>
+                        <p>@item.SPrice TK</p>
+                        @if (item.SQuantity > 0)
+                        {
+                            <p>Available</p>
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <p>
+        @Html.PagedListPager(Model, i => Url.Action("Index", new { i = i }), PagedListRenderOptions.PageNumbersOnly)
+    </p>
+}
+else
+{
+    <h2> @ViewBag.Message </h2>
+}
+
+

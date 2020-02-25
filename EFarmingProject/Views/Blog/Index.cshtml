@@ -1,0 +1,42 @@
+﻿@model IPagedList<EFarmingProject.Models.Tbl_Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<br />
+@using PagedList;
+@using PagedList.Mvc;
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Blog</a>
+        </li>
+        <li class="breadcrumb-item active">News</li>
+    </ol>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 col-sm-12 col-lg-12" style="margin-bottom:10px; border-bottom: 1px dashed #0026ff; padding-bottom:5px;">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    @*<img src="~/BlogImg/abc.jpg" height="50%" width="100%" />*@
+                    <img class="img-responsive" src="@Url.Content(item.BlogImage)" width="100%" height="50%;" />
+                </div>
+                <div class="col-md-8 col-sm-8 col-lg-8">
+                    <h3 class="card-title">@item.BlogTitle</h3>
+                    <p><small>@item.AuthorName</small>&nbsp;&nbsp;&nbsp;&nbsp;<small>Date Time :@item.BlCreatedDate</small></p>
+                    <p>
+                        @item.BShortDescri
+                    </p>
+                    @*<input class="btn btn-primary" type="submit" value="Read More" />*@
+                    @*@Html.ActionLink("Read More", "Details", "Blog", new { id = item.BLogId })*@
+                    @Html.ActionLink("Details", "Details", new { id = item.BLogId }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", "Blog", new { page = page }),PagedListRenderOptions.PageNumbersOnly)

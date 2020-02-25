@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbMyEFarmingProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Blog">
+          <Key>
+            <PropertyRef Name="BLogId" />
+          </Key>
+          <Property Name="BLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="BlogImage" Type="nvarchar(max)" />
+          <Property Name="BShortDescri" Type="nvarchar" MaxLength="200" />
+          <Property Name="BlCreatedDate" Type="datetime" />
+          <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LongDescription" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Tbl_BuyerProfile">
+          <Key>
+            <PropertyRef Name="BId" />
+          </Key>
+          <Property Name="BId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BEmailId" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="BNidNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BDateOfBirth" Type="datetime" />
+          <Property Name="BPassword" Type="varchar(max)" Nullable="false" />
+          <Property Name="BIsEmailVarified" Type="bit" Nullable="false" />
+          <Property Name="BActivationCode" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BDescription" Type="nvarchar" MaxLength="800" />
+          <Property Name="NidTypeId" Type="int" />
+          <Property Name="BImage" Type="nvarchar(max)" />
+          <Property Name="BCreatedDate" Type="datetime" />
+          <Property Name="BModifiedDate" Type="datetime" />
+          <Property Name="IsBuyer" Type="bit" />
+          <Property Name="IsSeller" Type="bit" />
+          <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="MobileNo" Type="int" />
+          <Property Name="AnotherMobileNo" Type="int" />
+          <Property Name="Postcode" Type="int" />
+          <Property Name="Thana" Type="varchar" MaxLength="100" />
+          <Property Name="Division" Type="nvarchar" MaxLength="50" />
+          <Property Name="Village" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsBuyerActivated" Type="bit" />
+          <Property Name="IsSellerActivated" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommentDate" Type="datetime" />
+          <Property Name="CommentTitle" Type="varchar" MaxLength="500" />
+          <Property Name="BLogId" Type="int" />
+          <Property Name="BId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_NidType">
+          <Key>
+            <PropertyRef Name="NidTypeId" />
+          </Key>
+          <Property Name="NidTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NidType" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="800" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsFeatured" Type="bit" />
+          <Property Name="BId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_SellerProduct">
+          <Key>
+            <PropertyRef Name="SProductId" />
+          </Key>
+          <Property Name="SProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" />
+          <Property Name="SProductTitle" Type="nvarchar" MaxLength="300" />
+          <Property Name="SProductDescription" Type="nvarchar" MaxLength="800" />
+          <Property Name="SProductImage" Type="nvarchar(max)" />
+          <Property Name="SQuantity" Type="int" />
+          <Property Name="SPrice" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SCreatedDate" Type="datetime" />
+          <Property Name="SModifiedDate" Type="datetime" />
+          <Property Name="IsAdminApproved" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Support">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BId" Type="int" />
+          <Property Name="ProductTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="800" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsersRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Tbl_BuyerProfile_Tbl_District">
+          <End Role="Tbl_District" Type="Self.Tbl_District" Multiplicity="0..1" />
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Tbl_BuyerProfile">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BuyerProfile_Tbl_NidType">
+          <End Role="Tbl_NidType" Type="Self.Tbl_NidType" Multiplicity="0..1" />
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_NidType">
+              <PropertyRef Name="NidTypeId" />
+            </Principal>
+            <Dependent Role="Tbl_BuyerProfile">
+              <PropertyRef Name="NidTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Comment_Tbl_Blog">
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="0..1" />
+          <End Role="Tbl_Comment" Type="Self.Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Blog">
+              <PropertyRef Name="BLogId" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="BLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Comment_Tbl_BuyerProfile">
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Role="Tbl_Comment" Type="Self.Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_BuyerProfile">
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SellerProduct_Tbl_BuyerProfile">
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Role="Tbl_SellerProduct" Type="Self.Tbl_SellerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_SellerProduct">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SellerProduct_Tbl_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="Tbl_SellerProduct" Type="Self.Tbl_SellerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_SellerProduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Support_Tbl_BuyerProfile">
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Role="Tbl_Support" Type="Self.Tbl_Support" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Support">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersRole_Tbl_BuyerProfile">
+          <End Role="Tbl_BuyerProfile" Type="Self.Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Role="UsersRole" Type="Self.UsersRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="UsersRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbMyEFarmingProjectModelStoreContainer">
+          <EntitySet Name="Tbl_Blog" EntityType="Self.Tbl_Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BuyerProfile" EntityType="Self.Tbl_BuyerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Comment" EntityType="Self.Tbl_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_District" EntityType="Self.Tbl_District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_NidType" EntityType="Self.Tbl_NidType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SellerProduct" EntityType="Self.Tbl_SellerProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Support" EntityType="Self.Tbl_Support" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersRole" EntityType="Self.UsersRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tbl_BuyerProfile_Tbl_District" Association="Self.FK_Tbl_BuyerProfile_Tbl_District">
+            <End Role="Tbl_District" EntitySet="Tbl_District" />
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BuyerProfile_Tbl_NidType" Association="Self.FK_Tbl_BuyerProfile_Tbl_NidType">
+            <End Role="Tbl_NidType" EntitySet="Tbl_NidType" />
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_Blog" Association="Self.FK_Tbl_Comment_Tbl_Blog">
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_BuyerProfile" Association="Self.FK_Tbl_Comment_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_BuyerProfile" Association="Self.FK_Tbl_Product_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Category" Association="Self.FK_Tbl_Product_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SellerProduct_Tbl_BuyerProfile" Association="Self.FK_Tbl_SellerProduct_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_SellerProduct" EntitySet="Tbl_SellerProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SellerProduct_Tbl_Category" Association="Self.FK_Tbl_SellerProduct_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_SellerProduct" EntitySet="Tbl_SellerProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Support_Tbl_BuyerProfile" Association="Self.FK_Tbl_Support_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Support" EntitySet="Tbl_Support" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersRole_Tbl_BuyerProfile" Association="Self.FK_UsersRole_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="UsersRole" EntitySet="UsersRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbMyEFarmingProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_SellerProduct" Relationship="Self.FK_Tbl_SellerProduct_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_SellerProduct" />
+          <NavigationProperty Name="Tbl_Product" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Product" />
+        </EntityType>
+        <EntityType Name="Tbl_District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_District" FromRole="Tbl_District" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <EntityType Name="Tbl_NidType">
+          <Key>
+            <PropertyRef Name="NidTypeId" />
+          </Key>
+          <Property Name="NidTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NidType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_NidType" FromRole="Tbl_NidType" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <EntityType Name="Tbl_SellerProduct">
+          <Key>
+            <PropertyRef Name="SProductId" />
+          </Key>
+          <Property Name="SProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" />
+          <Property Name="SProductTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SProductDescription" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="SProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SQuantity" Type="Int32" />
+          <Property Name="SPrice" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsAdminApproved" Type="Boolean" />
+          <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_SellerProduct_Tbl_Category" FromRole="Tbl_SellerProduct" ToRole="Tbl_Category" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_SellerProduct_Tbl_BuyerProfile" FromRole="Tbl_SellerProduct" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <EntityType Name="Tbl_Support">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BId" Type="Int32" />
+          <Property Name="ProductTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Support_Tbl_BuyerProfile" FromRole="Tbl_Support" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <Association Name="FK_Tbl_SellerProduct_Tbl_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="Tbl_SellerProduct" Type="Self.Tbl_SellerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_SellerProduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbMyEFarmingProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+          <EntitySet Name="Tbl_District" EntityType="Self.Tbl_District" />
+          <EntitySet Name="Tbl_NidType" EntityType="Self.Tbl_NidType" />
+          <EntitySet Name="Tbl_SellerProduct" EntityType="Self.Tbl_SellerProduct" />
+          <EntitySet Name="Tbl_Support" EntityType="Self.Tbl_Support" />
+          <AssociationSet Name="FK_Tbl_SellerProduct_Tbl_Category" Association="Self.FK_Tbl_SellerProduct_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_SellerProduct" EntitySet="Tbl_SellerProduct" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_BuyerProfile" EntityType="dbMyEFarmingProjectModel.Tbl_BuyerProfile" />
+          <AssociationSet Name="FK_Tbl_BuyerProfile_Tbl_District" Association="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_District">
+            <End Role="Tbl_District" EntitySet="Tbl_District" />
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_BuyerProfile_Tbl_NidType" Association="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_NidType">
+            <End Role="Tbl_NidType" EntitySet="Tbl_NidType" />
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SellerProduct_Tbl_BuyerProfile" Association="dbMyEFarmingProjectModel.FK_Tbl_SellerProduct_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_SellerProduct" EntitySet="Tbl_SellerProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Support_Tbl_BuyerProfile" Association="dbMyEFarmingProjectModel.FK_Tbl_Support_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Support" EntitySet="Tbl_Support" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Product" EntityType="dbMyEFarmingProjectModel.Tbl_Product" />
+          <EntitySet Name="UsersRole" EntityType="dbMyEFarmingProjectModel.UsersRole" />
+          <AssociationSet Name="FK_Tbl_Product_Tbl_BuyerProfile" Association="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersRole_Tbl_BuyerProfile" Association="dbMyEFarmingProjectModel.FK_UsersRole_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="UsersRole" EntitySet="UsersRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Category" Association="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Blog" EntityType="dbMyEFarmingProjectModel.Tbl_Blog" />
+          <EntitySet Name="Tbl_Comment" EntityType="dbMyEFarmingProjectModel.Tbl_Comment" />
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_Blog" Association="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_Blog">
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_BuyerProfile" Association="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_BuyerProfile">
+            <End Role="Tbl_BuyerProfile" EntitySet="Tbl_BuyerProfile" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Tbl_BuyerProfile">
+          <Key>
+            <PropertyRef Name="BId" />
+          </Key>
+          <Property Name="BId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BFirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BEmailId" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="BNidNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BDateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="BPassword" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BIsEmailVarified" Type="Boolean" Nullable="false" />
+          <Property Name="BActivationCode" Type="Guid" Nullable="false" />
+          <Property Name="BDescription" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="NidTypeId" Type="Int32" />
+          <Property Name="BImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="BModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsBuyer" Type="Boolean" />
+          <Property Name="IsSeller" Type="Boolean" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="MobileNo" Type="Int32" />
+          <Property Name="AnotherMobileNo" Type="Int32" />
+          <Property Name="Postcode" Type="Int32" />
+          <Property Name="Thana" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Village" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsBuyerActivated" Type="Boolean" />
+          <Property Name="IsSellerActivated" Type="Boolean" />
+          <NavigationProperty Name="Tbl_District" Relationship="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_District" FromRole="Tbl_BuyerProfile" ToRole="Tbl_District" />
+          <NavigationProperty Name="Tbl_NidType" Relationship="dbMyEFarmingProjectModel.FK_Tbl_BuyerProfile_Tbl_NidType" FromRole="Tbl_BuyerProfile" ToRole="Tbl_NidType" />
+          <NavigationProperty Name="Tbl_SellerProduct" Relationship="dbMyEFarmingProjectModel.FK_Tbl_SellerProduct_Tbl_BuyerProfile" FromRole="Tbl_BuyerProfile" ToRole="Tbl_SellerProduct" />
+          <NavigationProperty Name="Tbl_Support" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Support_Tbl_BuyerProfile" FromRole="Tbl_BuyerProfile" ToRole="Tbl_Support" />
+          <NavigationProperty Name="Tbl_Product" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_BuyerProfile" FromRole="Tbl_BuyerProfile" ToRole="Tbl_Product" />
+          <NavigationProperty Name="UsersRole" Relationship="dbMyEFarmingProjectModel.FK_UsersRole_Tbl_BuyerProfile" FromRole="Tbl_BuyerProfile" ToRole="UsersRole" />
+          <NavigationProperty Name="Tbl_Comment" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_BuyerProfile" FromRole="Tbl_BuyerProfile" ToRole="Tbl_Comment" />
+        </EntityType>
+        <Association Name="FK_Tbl_BuyerProfile_Tbl_District">
+          <End Type="dbMyEFarmingProjectModel.Tbl_District" Role="Tbl_District" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Tbl_BuyerProfile">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_BuyerProfile_Tbl_NidType">
+          <End Type="dbMyEFarmingProjectModel.Tbl_NidType" Role="Tbl_NidType" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_NidType">
+              <PropertyRef Name="NidTypeId" />
+            </Principal>
+            <Dependent Role="Tbl_BuyerProfile">
+              <PropertyRef Name="NidTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SellerProduct_Tbl_BuyerProfile">
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_SellerProduct" Role="Tbl_SellerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_SellerProduct">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Support_Tbl_BuyerProfile">
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_Support" Role="Tbl_Support" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Support">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsFeatured" Type="Boolean" />
+          <Property Name="BId" Type="Int32" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_BuyerProfile" FromRole="Tbl_Product" ToRole="Tbl_BuyerProfile" />
+          <NavigationProperty Name="Tbl_Category" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Product_Tbl_Category" FromRole="Tbl_Product" ToRole="Tbl_Category" />
+        </EntityType>
+        <EntityType Name="UsersRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_UsersRole_Tbl_BuyerProfile" FromRole="UsersRole" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <Association Name="FK_Tbl_Product_Tbl_BuyerProfile">
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_Product" Role="Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersRole_Tbl_BuyerProfile">
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.UsersRole" Role="UsersRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="UsersRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Category">
+          <End Type="dbMyEFarmingProjectModel.Tbl_Category" Role="Tbl_Category" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_Product" Role="Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_Blog">
+          <Key>
+            <PropertyRef Name="BLogId" />
+          </Key>
+          <Property Name="BLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BlogImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BShortDescri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BlCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Comment" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_Blog" FromRole="Tbl_Blog" ToRole="Tbl_Comment" />
+        </EntityType>
+        <EntityType Name="Tbl_Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommentDate" Type="DateTime" Precision="3" />
+          <Property Name="CommentTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BLogId" Type="Int32" />
+          <NavigationProperty Name="Tbl_Blog" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_Blog" FromRole="Tbl_Comment" ToRole="Tbl_Blog" />
+          <Property Name="BId" Type="Int32" />
+          <NavigationProperty Name="Tbl_BuyerProfile" Relationship="dbMyEFarmingProjectModel.FK_Tbl_Comment_Tbl_BuyerProfile" FromRole="Tbl_Comment" ToRole="Tbl_BuyerProfile" />
+        </EntityType>
+        <Association Name="FK_Tbl_Comment_Tbl_Blog">
+          <End Type="dbMyEFarmingProjectModel.Tbl_Blog" Role="Tbl_Blog" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_Comment" Role="Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Blog">
+              <PropertyRef Name="BLogId" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="BLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Comment_Tbl_BuyerProfile">
+          <End Type="dbMyEFarmingProjectModel.Tbl_BuyerProfile" Role="Tbl_BuyerProfile" Multiplicity="0..1" />
+          <End Type="dbMyEFarmingProjectModel.Tbl_Comment" Role="Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BuyerProfile">
+              <PropertyRef Name="BId" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="BId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbMyEFarmingProjectModelStoreContainer" CdmEntityContainer="dbMyEFarmingProjectEntities">
+          <EntitySetMapping Name="Tbl_Category">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_Category">
+              <MappingFragment StoreEntitySet="Tbl_Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_District">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_District">
+              <MappingFragment StoreEntitySet="Tbl_District">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DistrictType" ColumnName="DistrictType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_NidType">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_NidType">
+              <MappingFragment StoreEntitySet="Tbl_NidType">
+                <ScalarProperty Name="NidTypeId" ColumnName="NidTypeId" />
+                <ScalarProperty Name="NidType" ColumnName="NidType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SellerProduct">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_SellerProduct">
+              <MappingFragment StoreEntitySet="Tbl_SellerProduct">
+                <ScalarProperty Name="SProductId" ColumnName="SProductId" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="SProductTitle" ColumnName="SProductTitle" />
+                <ScalarProperty Name="SProductDescription" ColumnName="SProductDescription" />
+                <ScalarProperty Name="SProductImage" ColumnName="SProductImage" />
+                <ScalarProperty Name="SQuantity" ColumnName="SQuantity" />
+                <ScalarProperty Name="SPrice" ColumnName="SPrice" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SCreatedDate" ColumnName="SCreatedDate" />
+                <ScalarProperty Name="SModifiedDate" ColumnName="SModifiedDate" />
+                <ScalarProperty Name="IsAdminApproved" ColumnName="IsAdminApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Support">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_Support">
+              <MappingFragment StoreEntitySet="Tbl_Support">
+                <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BuyerProfile">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_BuyerProfile">
+              <MappingFragment StoreEntitySet="Tbl_BuyerProfile">
+                <ScalarProperty Name="IsSellerActivated" ColumnName="IsSellerActivated" />
+                <ScalarProperty Name="IsBuyerActivated" ColumnName="IsBuyerActivated" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Thana" ColumnName="Thana" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="AnotherMobileNo" ColumnName="AnotherMobileNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+                <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
+                <ScalarProperty Name="IsBuyer" ColumnName="IsBuyer" />
+                <ScalarProperty Name="BModifiedDate" ColumnName="BModifiedDate" />
+                <ScalarProperty Name="BCreatedDate" ColumnName="BCreatedDate" />
+                <ScalarProperty Name="BImage" ColumnName="BImage" />
+                <ScalarProperty Name="NidTypeId" ColumnName="NidTypeId" />
+                <ScalarProperty Name="BDescription" ColumnName="BDescription" />
+                <ScalarProperty Name="BActivationCode" ColumnName="BActivationCode" />
+                <ScalarProperty Name="BIsEmailVarified" ColumnName="BIsEmailVarified" />
+                <ScalarProperty Name="BPassword" ColumnName="BPassword" />
+                <ScalarProperty Name="BDateOfBirth" ColumnName="BDateOfBirth" />
+                <ScalarProperty Name="BNidNo" ColumnName="BNidNo" />
+                <ScalarProperty Name="BEmailId" ColumnName="BEmailId" />
+                <ScalarProperty Name="BLastName" ColumnName="BLastName" />
+                <ScalarProperty Name="BFirstName" ColumnName="BFirstName" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Product">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_Product">
+              <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersRole">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.UsersRole">
+              <MappingFragment StoreEntitySet="UsersRole">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Blog">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_Blog">
+              <MappingFragment StoreEntitySet="Tbl_Blog">
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="BlCreatedDate" ColumnName="BlCreatedDate" />
+                <ScalarProperty Name="BShortDescri" ColumnName="BShortDescri" />
+                <ScalarProperty Name="BlogImage" ColumnName="BlogImage" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BLogId" ColumnName="BLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Comment">
+            <EntityTypeMapping TypeName="dbMyEFarmingProjectModel.Tbl_Comment">
+              <MappingFragment StoreEntitySet="Tbl_Comment">
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="BLogId" ColumnName="BLogId" />
+                <ScalarProperty Name="CommentTitle" ColumnName="CommentTitle" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="CommentName" ColumnName="CommentName" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

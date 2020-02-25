@@ -1,0 +1,89 @@
+﻿@model EFarmingProject.Models.Tbl_SellerProduct
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_BuyerLayout.cshtml";
+}
+<h2 style="text-align:center;padding:20px 20px; color:#ddd; background-color:#ff0000; border-radius:50px;">Product Details</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <div class="row" style="border: 1px solid #000;">
+            <div class="col-md-5 col-sm-6">
+                @*<dt>
+                    @Html.DisplayName("Buyer Image")
+                </dt>*@
+                <br />
+                <br />
+                <dd>
+                    <img class="img-thumbnail" style="height: 280px;" src="@Url.Content(Model.SProductImage)" />
+                </dd>
+                <br />
+                <br />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.SProductTitle)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SProductTitle)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.SProductDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SProductDescription)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.SQuantity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SQuantity)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.SPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SPrice)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tbl_Category.CategoryName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tbl_Category.CategoryName)
+                </dd>
+                <br />
+                <br />
+
+
+            </div>
+        </div>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("View Profile of User", "ProfileView", new { id = Model.BId },new { @class="btn btn-primary"}) |
+    @Html.ActionLink("Back to Homepage", "Index","BuyerProduct", new { @class="btn btn-primary"})
+</p>
+
+
+
+

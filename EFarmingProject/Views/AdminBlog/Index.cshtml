@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EFarmingProject.Models.Tbl_Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Blog</a>
+        </li>
+        <li class="breadcrumb-item active">News</li>
+    </ol>
+
+<p>
+    @Html.ActionLink("Add Blog Post", "Create","",new { @class="btn btn-info"})
+</p>
+<table class="table table-striped table-responsive table-bordered table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BShortDescri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlCreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogTitle)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.BlogImage)*@
+            <img src="@Url.Content(item.BlogImage)" width="50px;" height="70px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BShortDescri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlCreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LongDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BLogId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BLogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BLogId })
+        </td>
+    </tr>
+}
+
+</table>

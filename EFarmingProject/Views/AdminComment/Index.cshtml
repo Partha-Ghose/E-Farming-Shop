@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EFarmingProject.Models.Tbl_Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Blog</a>
+        </li>
+        <li class="breadcrumb-item active">Comment</li>
+    </ol>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_BuyerProfile.BFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentTitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tbl_BuyerProfile.BFirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CommentDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CommentTitle)
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EFarmingProject.Models.Tbl_SellerProduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BuyerLayout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Seller View</a>
+    </li>
+    <li class="breadcrumb-item active">Product</li>
+</ol>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table table-bordered table-striped table-responsive table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SProductId)*@
+            @Html.DisplayName("Product ID")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SProductTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdminApproved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_BuyerProfile.BFirstName)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Tbl_Category.CategoryName)*@
+            @Html.DisplayName("Category Name")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SProductId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SProductTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SProductDescription)
+    </td>
+    <td>
+        @*@Html.DisplayFor(modelItem => item.SProductImage)*@
+        <img src="@Url.Content(item.SProductImage)" width="50px;" height="70px;" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SQuantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsAdminApproved)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tbl_BuyerProfile.BFirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tbl_Category.CategoryName)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.SProductId }) @*|
+        @Html.ActionLink("Details", "Details", new { id = item.SProductId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.SProductId })*@
+    </td>
+</tr>
+    }
+
+</table>

@@ -1,0 +1,251 @@
+﻿@model EFarmingProject.Models.Tbl_BuyerProfile
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Users</a>
+        </li>
+        <li class="breadcrumb-item active">Details</li>
+    </ol>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <div class="row" style="border: 1px solid #000;">
+            <div class="col-md-5 col-sm-6">
+                @*<dt>
+            @Html.DisplayName("Buyer Image")
+        </dt>*@
+                <br />
+                <br />
+                <dd>
+                    <img class="img-thumbnail" style="height: 280px;" src="@Url.Content(Model.BImage)" />
+                </dd>
+
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayName("Buyer Profile Active or Not ?")
+                </dt>
+                <br />
+                <dd>
+                    @*@Html.CheckBoxFor(x => x.IsBuyer)*@
+                    <div class="row">
+                        <div class="col-md-5">
+                            @*@Html.DisplayFor(model => model.IsBuyer)*@
+                            @if (Model.IsBuyer == true)
+                            {
+                                <input type="button" class="btn btn-primary" value="Active" />
+                            }
+                            else
+                            {
+                                <input type="button" value="Not Active" />
+                            }
+                        </div>
+                        <br />
+                        <div class="col-md-7">
+                            @if (Model.IsBuyer != null)
+                            {
+                                if (Model.IsBuyer == true)
+                                {
+                                    if (Model.IsBuyerActivated == true)
+                                    {
+                                        <p>@Html.ActionLink("Deactivate Buyer", "DeactivateBuyer", new { id = Model.BId }, new { @class = "btn btn-primary" })</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@Html.ActionLink("Activate Buyer", "ActivateBuyer", new { id = Model.BId }, new { @class = "btn btn-primary" })</p>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayName("Seller Profile Active or Not ?")
+                </dt>
+                <br />
+                <dd>
+                    @*@Html.CheckBoxFor(x => x.IsSeller)*@
+                    @*@Html.DisplayFor(model => model.IsSeller)*@
+                    <div class="row">
+                        <div class="col-md-5">
+                            @if (Model.IsSeller == true)
+                            {
+                                <input type="button" class="btn btn-primary" value="Active" /><br />
+                            }
+                            else
+                            {
+                                <input type="button" value="Not Active" /><br />
+                            }
+                        </div>
+                        <div class="col-md-7">
+                            @if (Model.IsSeller != null)
+                            {
+                                if (Model.IsSeller == true)
+                                {
+                                    if (Model.IsSellerActivated == true)
+                                    {
+                                        <p>@Html.ActionLink("Deactivate Seller", "DeactivateSeller", new { id = Model.BId }, new { @class = "btn btn-primary" })</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@Html.ActionLink("Activate Seller", "ActivateSeller", new { id = Model.BId }, new { @class = "btn btn-primary" })</p>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BDescription)
+                </dd>
+                <br />
+                <br />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+
+                <br />
+                <br />
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.BFirstName)*@
+                    @Html.DisplayName("First Name")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BFirstName)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BLastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BLastName)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BEmailId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BEmailId)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BNidNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BNidNo)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tbl_NidType.NidType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tbl_NidType.NidType)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.MobileNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MobileNo)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnotherMobileNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AnotherMobileNo)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BDateOfBirth)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BDateOfBirth)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Village)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Village)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Postcode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Postcode)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Thana)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Thana)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayName("District Name")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tbl_District.DistrictType)
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Division)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Division)
+                </dd>
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BId },new { @class="btn btn-primary"}) |
+    @Html.ActionLink("Back to List", "Index","", new { @class="btn btn-primary"})
+</p>

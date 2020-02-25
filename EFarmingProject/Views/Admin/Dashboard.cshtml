@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+
+<div class="row" style="margin-left:5px;">
+    <div class="col-md-4 navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="~/Category/Index">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Categories</span>
+            </a>
+        </li>
+    </div>
+    <div class="col-md-4 navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="~/AdminSeller/Index">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Seller Add Product</span>
+            </a>
+        </li>
+    </div>
+    <div class="col-md-4 navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="~/Product/Index">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Products</span>
+            </a>
+        </li>
+    </div>
+    <div class="col-md-4 navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="~/AdminSupport/Index">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Support</span>
+            </a>
+        </li>
+    </div>
+    <div class="col-md-4 navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="~/AdminBlog/Index">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Blog</span>
+            </a>
+        </li>
+    </div>
+</div>
+

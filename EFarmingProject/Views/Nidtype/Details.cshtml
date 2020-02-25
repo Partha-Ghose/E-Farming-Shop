@@ -1,0 +1,31 @@
+﻿@model EFarmingProject.Models.Tbl_NidType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">NID Type</a>
+        </li>
+        <li class="breadcrumb-item active">Details</li>
+    </ol>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NidType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NidType)
+        </dd>
+        <br/>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NidTypeId },new { @class="btn btn-secondary"}) |
+    @Html.ActionLink("Back to List", "Index","",new { @class="btn btn-primary"})
+</p>

@@ -1,0 +1,72 @@
+﻿@model EFarmingProject.Models.ViewBlogComment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="border: 1px solid #0026ff; padding:10px 15px; border-radius:20px;">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="card-title">@Model.Blog.BlogTitle</h3>
+                <p><small>@Model.Blog.AuthorName</small>&nbsp;&nbsp;&nbsp;&nbsp;<small>Date Time :@Model.Blog.BlCreatedDate</small></p>
+            </div>
+            <div class="col-md-4"></div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align:center;">
+                <br />
+                <img class="img-thumbnail" style="height: 300px;" width="400px;" src="@Url.Content(Model.Blog.BlogImage)" />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align:justify; line-height:20px;">
+                <br />
+                <p>@Model.Blog.LongDescription</p>
+                <br />
+            </div>
+        </div>
+       <hr />
+        @*@Html.ActionLink("Comment", Model.Blog.BLogId);*@
+        <div class="row">
+            <div class="col-md-12" style="text-align:justify; line-height:20px;">
+                @Html.ActionLink("Comment", "Comment", "Blog", new { @class="btn btn-info"})
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    @foreach(var item in Model.Comment)
+                    {
+                    <div class="col-md-12" style="background:#e1e5e1; border:1px solid #ffd800; border-radius:20px; padding:10px 15px;">
+                        <div class="col-md-2">
+                            <i style="font-size:40px;" class="fas fa-user"></i>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>@item.Tbl_BuyerProfile.BFirstName</h5>
+                            <p><span>@item.CommentDate</span></p>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-6">
+                            
+                            <h4>@item.CommentTitle</h4>
+                        </div>
+                    </div><br />
+                    }
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index","",new { @class="btn btn-info"})
+</p>
